@@ -1,0 +1,11 @@
+name: binning
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - metabat2
+  - maxbin2
+  - concoct
+  - checkm-genome
+  - gtdbtk
+

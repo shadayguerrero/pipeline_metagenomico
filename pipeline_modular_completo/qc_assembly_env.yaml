@@ -1,0 +1,11 @@
+name: qc_assembly
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - trim-galore
+  - fastqc
+  - megahit
+  - bowtie2
+  - samtools
+

@@ -1,0 +1,7 @@
+name: antismash
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - antismash
+

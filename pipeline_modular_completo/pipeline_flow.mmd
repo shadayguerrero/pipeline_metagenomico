@@ -1,0 +1,93 @@
+graph TD
+    Start([Inicio: Reads Crudos<br/>FASTQ.GZ]) --> M1
+
+    %% Módulo 1: QC & Trimming
+    M1[Módulo 1: QC & Trimming<br/>Trim Galore<br/>Threads: 20]
+    M1 --> M1_out[Reads Limpios<br/>trimmed/]
+    
+    %% Módulo 2: Host Removal
+    M1_out --> M2[Módulo 2: Host Removal<br/>Bowtie2<br/>Threads: 12]
+    M2 --> M2_out[Reads sin Host<br/>host_removed/]
+    
+    %% Bifurcación: Assembly y Taxonomía de Reads
+    M2_out --> M3
+    M2_out --> M5
+    
+    %% Módulo 3: Assembly
+    M3[Módulo 3: Assembly<br/>MEGAHIT<br/>Threads: 60<br/>Temp: ~100 GB]
+    M3 --> M3_out[Contigs<br/>megahit_assemblies/]
+    
+    %% Módulo 4: Binning
+    M3_out --> M4[Módulo 4: Binning<br/>Threads: 40]
+    M2_out --> M4
+    
+    M4 --> M4a[MetaBAT2<br/>Cobertura + Composición]
+    M4 --> M4b[MaxBin2<br/>Marcadores de Copia Única]
+    M4 --> M4c[CONCOCT<br/>Fragmentación + Clustering<br/>Temp: ~20 GB]
+    
+    M4a --> M4_bins1[Bins MetaBAT2<br/>binning/metabat2/]
+    M4b --> M4_bins2[Bins MaxBin2<br/>binning/maxbin2/]
+    M4c --> M4_bins3[Bins CONCOCT<br/>binning/concoct/]
+    
+    M4_bins1 --> M4d[DAS Tool<br/>Refinamiento]
+    M4_bins2 --> M4d
+    M4_bins3 --> M4d
+    
+    M4d --> M4_out[Bins Refinados<br/>binning/dastool/]
+    
+    %% Módulo 5: Taxonomía de Reads
+    M5[Módulo 5: Taxonomía de Reads<br/>Kraken2<br/>Threads: 40]
+    M5 --> M5a{Modo Kraken2}
+    M5a -->|Simple| M5_db1[1 Base de Datos<br/>GTDB r214]
+    M5a -->|Dual| M5_db2[2 Bases de Datos<br/>GTDB + PlusPFP]
+    M5a -->|Triple| M5_db3[3 Bases de Datos<br/>GTDB + PlusPFP + EuPathDB]
+    
+    M5_db1 --> M5_out[Taxonomía de Reads<br/>kraken2/]
+    M5_db2 --> M5_out
+    M5_db3 --> M5_out
+    
+    %% Selección de Bins
+    M4_out --> BinSelect{Selección de Bins}
+    M4_bins1 -.->|Opcional| BinSelect
+    M4_bins2 -.->|Opcional| BinSelect
+    M4_bins3 -.->|Opcional| BinSelect
+    
+    BinSelect -->|Auto/DAS Tool| M6
+    
+    %% Módulo 6: GTDB-Tk
+    M6[Módulo 6: Taxonomía de Bins<br/>GTDB-Tk v2.5.2<br/>Base: r226 + Skani<br/>Threads: 40<br/>Temp: ~150 GB]
+    M6 --> M6_out[Taxonomía de Bins<br/>gtdbtk/]
+    
+    %% Módulo 7: Prokka
+    M4_out --> M7[Módulo 7: Anotación<br/>Prokka<br/>Threads: 40]
+    M7 --> M7_out[Genes Anotados<br/>prokka/]
+    
+    %% Módulo 8: RGI
+    M7_out --> M8[Módulo 8: Resistencia<br/>RGI + CARD<br/>Threads: 40]
+    M8 --> M8_out[Genes de Resistencia<br/>rgi/]
+    
+    %% Módulo 9: AntiSMASH
+    M7_out --> M9[Módulo 9: Metabolitos<br/>AntiSMASH<br/>Threads: 40<br/>Temp: ~30 GB]
+    M9 --> M9_out[Clusters Biosintéticos<br/>antismash/]
+    
+    %% Módulo 10: Análisis
+    M5_out --> M10[Módulo 10: Análisis<br/>Python + R]
+    M6_out --> M10
+    M8_out --> M10
+    M9_out --> M10
+    
+    M10 --> M10_out[Reportes Finales<br/>analysis/]
+    
+    M10_out --> End([Fin: Resultados Completos])
+    
+    %% Estilos
+    classDef moduleStyle fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef dataStyle fill:#50C878,stroke:#2E7D4E,stroke-width:2px,color:#fff
+    classDef binnerStyle fill:#F39C12,stroke:#C87F0A,stroke-width:2px,color:#fff
+    classDef decisionStyle fill:#E74C3C,stroke:#C0392B,stroke-width:2px,color:#fff
+    
+    class M1,M2,M3,M4,M5,M6,M7,M8,M9,M10 moduleStyle
+    class M1_out,M2_out,M3_out,M4_out,M5_out,M6_out,M7_out,M8_out,M9_out,M10_out dataStyle
+    class M4a,M4b,M4c,M4d moduleStyle
+    class M4_bins1,M4_bins2,M4_bins3 binnerStyle
+    class M5a,BinSelect decisionStyle

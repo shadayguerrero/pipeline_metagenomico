@@ -1,0 +1,16 @@
+name: binning
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - bowtie2
+  - samtools
+  - metabat2
+  - maxbin2
+  - concoct
+  - das_tool
+  - bbmap  # Para pileup.sh (usado por MaxBin2)
+  - diamond  # Para DAS Tool
+  - checkm-genome
+

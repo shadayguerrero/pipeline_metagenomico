@@ -1,0 +1,15 @@
+name: tax_annot
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - kraken2
+  - prokka
+  - rgi
+  - antismash
+  - biom-format
+  - scikit-bio
+  - pandas
+  - matplotlib
+  - seaborn
+

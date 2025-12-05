@@ -1,0 +1,14 @@
+name: analysis
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=3.11
+  - biom-format
+  - scikit-bio
+  - scipy
+  - pandas
+  - matplotlib
+  - seaborn
+  - numpy
+
