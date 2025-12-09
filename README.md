@@ -377,7 +377,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 **Shaday Guerrero**
 
 - GitHub: [@shadayguerrero](https://github.com/shadayguerrero)
-- Email: shaday.guerrero@ejemplo.com
+- Email: shaday.guerrero@cinvestav.mx
 
 **Repositorio:** [https://github.com/shadayguerrero/pipeline_metagenomico](https://github.com/shadayguerrero/pipeline_metagenomico)
 
