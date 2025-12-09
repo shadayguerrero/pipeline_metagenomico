@@ -61,7 +61,8 @@ Diseñado para ser **modular**, **escalable** y **fácil de usar**, permitiendo 
 
 ![Diagrama de Flujo del Pipeline](https://private-us-east-1.manuscdn.com/sessionFile/qaU4ooowr2qViGx42i6Pxe/sandbox/05XdRNi9wICX0Gk2LbQtpz-images_1765309228082_na1fn_L2hvbWUvdWJ1bnR1L3BpcGVsaW5lX2Zsb3c.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvcWFVNG9vb3dyMnFWaUd4NDJpNlB4ZS9zYW5kYm94LzA1WGRSTmk5d0lDWDBHazJMYlF0cHotaW1hZ2VzXzE3NjUzMDkyMjgwODJfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwzQnBjR1ZzYVc1bFgyWnNiM2MucG5nIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=eEps~5Tl~hKPhRIguS5U1TZpXyXX4FChbdAcTCG~tQhgA8oe5JLmUZebPso0nzWJbjuwGcEBIAJvY09k~xnredgoD-H56Zya5V3L0~GWXSPnD5rHRdgFM1lY2j1i-OU5XGtn8cK8lNmJ5aLY~Ibf3toAS-lTRZpNlYKvIBIWnIeX1WXFDTyqX0laICIn54qNF0mQmvg7J1qntSF-Xt59PQ0iQPTzaUzZZC7y0LclY3WH4OVMdiGabEOFLLeTUaWy2mjAEN~Kyc0rnMYpxnQLOit7yQziS7oTmMRmjhK-aVvYB2fvtMFwMYto9qUwJtobz5rqDr7wPwryi~GnjgsKvA__)
 
-**[Ver documentación completa del flujo →](FLUJO_PIPELINE.md)**
+**[Ver documentación completa del flujo →](pipeline_modular_completo
+\FLUJO_PIPELINE.md)**
 
 ---
 
