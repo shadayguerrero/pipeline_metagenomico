@@ -1,4 +1,4 @@
-# Pipeline Metagenómico Modular
+# MetaConexus: Pipeline Metagenómico Modular
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/Platform-Linux-blue.svg)](https://www.linux.org/)
