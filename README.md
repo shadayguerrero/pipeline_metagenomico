@@ -367,9 +367,9 @@ micromamba create -n gtdbtk -c bioconda python=3.10 gtdbtk=2.5.2
 
 ---
 
-## 📄 Licencia
+## 📄 
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto fue realizado en mi estancia de Profesor Visitante en CINVESTAV Unidad Irapuado, en el Laboratorio de Bioinformatica y Redes complejas dirigido por la Dra Maribel Hernandez . El trabajo fue en conjunto con la Dra Elizabeth Cadenas (elizabeth.cadenas.c@gmail.com ), Dra Katia Aviña-Padilla (Katia.avinap@cinvestav.mx), para el estudio de Las Pozas de Cuatro Cienegas Cohauhila.
 
 ---
 
@@ -403,18 +403,7 @@ Este pipeline integra las siguientes herramientas de código abierto:
 
 ---
 
-## 📊 Citación
 
-Si usas este pipeline en tu investigación, por favor cita:
-
-```bibtex
-@software{guerrero2025pipeline,
-  author = {Guerrero, Shaday},
-  title = {Pipeline Metagenómico Modular},
-  year = {2025},
-  url = {https://github.com/shadayguerrero/pipeline_metagenomico}
-}
-```
 
 Y las herramientas individuales según corresponda.
 
