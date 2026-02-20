@@ -1,310 +1,309 @@
-# MetaConexus: Pipeline Metagenómico Modular
+# MetaConexus: Modular Metagenomic Pipeline
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/Platform-Linux-blue.svg)](https://www.linux.org/)
 [![Shell](https://img.shields.io/badge/Shell-Bash-green.svg)](https://www.gnu.org/software/bash/)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 
-Pipeline completo y modular para análisis metagenómico de alto rendimiento, desde reads crudos hasta reportes finales integrados.
+Complete and modular pipeline for high-throughput metagenomic analysis, from raw reads to integrated final reports.
 
 ---
 
-## 📋 Tabla de Contenidos
+## 📋 Table of Contents
 
-- [Descripción](#descripción)
-- [Características](#características)
-- [Diagrama de Flujo](#diagrama-de-flujo)
-- [Módulos del Pipeline](#módulos-del-pipeline)
-- [Instalación Rápida](#instalación-rápida)
-- [Uso](#uso)
-- [Documentación](#documentación)
-- [Requisitos](#requisitos)
-- [Estructura de Directorios](#estructura-de-directorios)
-- [Ejemplos](#ejemplos)
-- [Solución de Problemas](#solución-de-problemas)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
-- [Contacto](#contacto)
-
----
-
-## 🧬 Descripción
-
-Este pipeline metagenómico procesa datos de secuenciación de nueva generación (NGS) para caracterizar comunidades microbianas complejas. Integra herramientas de vanguardia en bioinformática para:
-
-- **Preprocesar** reads de secuenciación
-- **Ensamblar** genomas metagenómicos
-- **Clasificar** taxonómicamente reads y genomas
-- **Anotar** funcionalmente genes y proteínas
-- **Identificar** genes de resistencia a antibióticos
-- **Detectar** clusters biosintéticos de metabolitos secundarios
-- **Generar** reportes integrados y visualizaciones
-
-Diseñado para ser **modular**, **escalable** y **fácil de usar**, permitiendo ejecutar el pipeline completo o módulos individuales según las necesidades del proyecto.
+- [Description](#description)
+- [Features](#features)
+- [Workflow Diagram](#workflow-diagram)
+- [Pipeline Modules](#pipeline-modules)
+- [Quick Installation](#quick-installation)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [Requirements](#requirements)
+- [Directory Structure](#directory-structure)
+- [Examples](#examples)
+- [Troubleshooting](#troubleshooting)
+- [Contributions](#contributions)
+- [License](#license)
+- [Contact](#contact)
 
 ---
 
-## ✨ Características
+## 🧬 Description
 
-- ✅ **Modular:** Ejecuta módulos individuales o el pipeline completo
-- ✅ **Flexible:** Selección de bins (DAS Tool, MetaBAT2, MaxBin2, CONCOCT)
-- ✅ **Robusto:** Binning con 4 herramientas + refinamiento con DAS Tool
-- ✅ **Actualizado:** GTDB-Tk v2.5.2 con base de datos r226 y Skani
-- ✅ **Completo:** 10 módulos desde QC hasta análisis integrativo
-- ✅ **Optimizado:** Manejo inteligente de archivos temporales
-- ✅ **Documentado:** Guías detalladas para cada paso
-- ✅ **Reproducible:** Scripts versionados y configuración explícita
+This metagenomic pipeline processes next-generation sequencing (NGS) data to characterize complex microbial communities. It integrates state-of-the-art bioinformatics tools to:
 
----
+- **Preprocess** sequencing reads
+- **Assemble** metagenomic genomes
+- **Classify** reads and genomes taxonomically
+- **Annotate** genes and proteins functionally
+- **Identify** antibiotic resistance genes
+- **Detect** biosynthetic gene clusters for secondary metabolites
+- **Generate** integrated reports and visualizations
 
-## 📊 Diagrama de Flujo
-
-![Diagrama de Flujo del Pipeline](https://private-us-east-1.manuscdn.com/sessionFile/qaU4ooowr2qViGx42i6Pxe/sandbox/05XdRNi9wICX0Gk2LbQtpz-images_1765309228082_na1fn_L2hvbWUvdWJ1bnR1L3BpcGVsaW5lX2Zsb3c.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvcWFVNG9vb3dyMnFWaUd4NDJpNlB4ZS9zYW5kYm94LzA1WGRSTmk5d0lDWDBHazJMYlF0cHotaW1hZ2VzXzE3NjUzMDkyMjgwODJfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwzQnBjR1ZzYVc1bFgyWnNiM2MucG5nIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=eEps~5Tl~hKPhRIguS5U1TZpXyXX4FChbdAcTCG~tQhgA8oe5JLmUZebPso0nzWJbjuwGcEBIAJvY09k~xnredgoD-H56Zya5V3L0~GWXSPnD5rHRdgFM1lY2j1i-OU5XGtn8cK8lNmJ5aLY~Ibf3toAS-lTRZpNlYKvIBIWnIeX1WXFDTyqX0laICIn54qNF0mQmvg7J1qntSF-Xt59PQ0iQPTzaUzZZC7y0LclY3WH4OVMdiGabEOFLLeTUaWy2mjAEN~Kyc0rnMYpxnQLOit7yQziS7oTmMRmjhK-aVvYB2fvtMFwMYto9qUwJtobz5rqDr7wPwryi~GnjgsKvA__)
-
-**[Ver documentación completa del flujo →][(pipeline_modular_completo
-\FLUJO_PIPELINE.md](https://github.com/shadayguerrero/pipeline_metagenomico/blob/main/pipeline_modular_completo/FLUJO_PIPELINE.md))**
+Designed to be **modular**, **scalable**, and **user-friendly**, allowing execution of the complete pipeline or individual modules according to project needs.
 
 ---
 
-## 🔧 Módulos del Pipeline
+## ✨ Features
 
-| # | Módulo | Herramienta | Función | Tiempo* |
-|---|--------|-------------|---------|---------|
-| **1** | QC & Trimming | Trim Galore | Control de calidad y limpieza de reads | 30-60 min |
-| **2** | Host Removal | Bowtie2 | Eliminación de ADN del hospedero | 1-2 h |
-| **3** | Assembly | MEGAHIT | Ensamblaje de novo de contigs | 4-8 h |
-| **4** | Binning | MetaBAT2, MaxBin2, CONCOCT, DAS Tool | Reconstrucción de genomas (MAGs) | 2-3 h |
-| **5** | Taxonomía de Reads | Kraken2 | Clasificación taxonómica de reads | 30-60 min |
-| **6** | Taxonomía de Bins | GTDB-Tk v2.5.2 | Clasificación taxonómica de genomas | 2-4 h |
-| **7** | Anotación | Prokka | Anotación funcional de genes | 1-2 h |
-| **8** | Resistencia | RGI + CARD | Identificación de genes de resistencia | 30-60 min |
-| **9** | Metabolitos | AntiSMASH | Detección de clusters biosintéticos | 2-4 h |
-| **10** | Análisis | Python + R | Reportes integrados y visualizaciones | 30-60 min |
-
-\* *Tiempo estimado para 2 muestras con 40 threads*
-
-**Tiempo total:** 23-37 horas (~1-1.5 días)
+- ✅ **Modular:** Run individual modules or the complete pipeline
+- ✅ **Flexible:** Bin selection (DAS Tool, MetaBAT2, MaxBin2, CONCOCT)
+- ✅ **Robust:** Binning with 4 tools + refinement with DAS Tool
+- ✅ **Updated:** GTDB-Tk v2.5.2 with database r226 and Skani
+- ✅ **Complete:** 10 modules from QC to integrative analysis
+- ✅ **Optimized:** Intelligent temporary file management
+- ✅ **Documented:** Detailed guides for each step
+- ✅ **Reproducible:** Versioned scripts and explicit configuration
 
 ---
 
-## 🚀 Instalación Rápida
+## 📊 Workflow Diagram
 
-### Prerrequisitos
+![Pipeline Workflow Diagram](https://private-us-east-1.manuscdn.com/sessionFile/qaU4ooowr2qViGx42i6Pxe/sandbox/05XdRNi9wICX0Gk2LbQtpz-images_1765309228082_na1fn_L2hvbWUvdWJ1bnR1L3BpcGVsaW5lX2Zsb3c.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvcWFVNG9vb3dyMnFWaUd4NDJpNlB4ZS9zYW5kYm94LzA1WGRSTmk5d0lDWDBHazJMYlF0cHotaW1hZ2VzXzE3NjUzMDkyMjgwODJfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwzQnBjR1ZzYVc1bFgyWnNiM2MucG5nIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=eEps~5Tl~hKPhRIguS5U1TZpXyXX4FChbdAcTCG~tQhgA8oe5JLmUZebPso0nzWJbjuwGcEBIAJvY09k~xnredgoD-H56Zya5V3L0~GWXSPnD5rHRdgFM1lY2j1i-OU5XGtn8cK8lNmJ5aLY~Ibf3toAS-lTRZpNlYKvIBIWnIeX1WXFDTyqX0laICIn54qNF0mQmvg7J1qntSF-Xt59PQ0iQPTzaUzZZC7y0LclY3WH4OVMdiGabEOFLLeTUaWy2mjAEN~Kyc0rnMYpxnQLOit7yQziS7oTmMRmjhK-aVvYB2fvtMFwMYto9qUwJtobz5rqDr7wPwryi~GnjgsKvA__)
 
-- Linux (Ubuntu 20.04+ o CentOS 7+)
-- [Micromamba](https://mamba.readthedocs.io/en/latest/installation.html) o Conda
-- 40+ threads recomendados
-- 500+ GB de espacio en disco
+**[View complete workflow documentation →](https://github.com/shadayguerrero/pipeline_metagenomico/blob/main/pipeline_modular_completo/FLUJO_PIPELINE.md)**
 
-### Paso 1: Clonar el Repositorio
+---
+
+## 🔧 Pipeline Modules
+
+| # | Module | Tool | Function | Time* |
+|---|--------|------|----------|-------|
+| **1** | QC & Trimming | Trim Galore | Quality control and read cleaning | 30-60 min |
+| **2** | Host Removal | Bowtie2 | Host DNA removal | 1-2 h |
+| **3** | Assembly | MEGAHIT | De novo contig assembly | 4-8 h |
+| **4** | Binning | MetaBAT2, MaxBin2, CONCOCT, DAS Tool | Genome reconstruction (MAGs) | 2-3 h |
+| **5** | Read Taxonomy | Kraken2 | Taxonomic classification of reads | 30-60 min |
+| **6** | Bin Taxonomy | GTDB-Tk v2.5.2 | Taxonomic classification of genomes | 2-4 h |
+| **7** | Annotation | Prokka | Functional gene annotation | 1-2 h |
+| **8** | Resistance | RGI + CARD | Antibiotic resistance gene identification | 30-60 min |
+| **9** | Metabolites | AntiSMASH | Biosynthetic cluster detection | 2-4 h |
+| **10** | Analysis | Python + R | Integrated reports and visualizations | 30-60 min |
+
+\* *Estimated time for 2 samples with 40 threads*
+
+**Total time:** 23-37 hours (~1-1.5 days)
+
+---
+
+## 🚀 Quick Installation
+
+### Prerequisites
+
+- Linux (Ubuntu 20.04+ or CentOS 7+)
+- [Micromamba](https://mamba.readthedocs.io/en/latest/installation.html) or Conda
+- 40+ threads recommended
+- 500+ GB disk space
+
+### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/shadayguerrero/pipeline_metagenomico.git
 cd pipeline_metagenomico
 ```
 
-### Paso 2: Instalar Ambientes
+### Step 2: Install Environments
 
 ```bash
-# Crear ambientes con micromamba
+# Create environments with micromamba
 bash INSTALACION_AMBIENTES.sh
 ```
 
-### Paso 3: Configurar Bases de Datos
+### Step 3: Configure Databases
 
 ```bash
-# GTDB-Tk (requerido para módulo 6)
-export GTDBTK_DATA_PATH="/ruta/a/gtdbtk_data_release226"
+# GTDB-Tk (required for module 6)
+export GTDBTK_DATA_PATH="/path/to/gtdbtk_data_release226"
 
-# Kraken2 (requerido para módulo 5)
-# Descargar bases de datos desde https://benlangmead.github.io/aws-indexes/k2
+# Kraken2 (required for module 5)
+# Download databases from https://benlangmead.github.io/aws-indexes/k2
 ```
 
-### Paso 4: Configurar Directorios Temporales
+### Step 4: Configure Temporary Directories
 
 ```bash
-# Si tu root está lleno, configura temporales en disco con espacio
+# If your root is full, configure temporaries on disk with space
 source setup_tmp_part4.sh
 ```
 
-**[Ver guía de configuración completa →](https://github.com/shadayguerrero/pipeline_metagenomico/blob/main/pipeline_modular_completo/CONFIGURACION_RAPIDA.md)**
+**[View complete configuration guide →](https://github.com/shadayguerrero/pipeline_metagenomico/blob/main/pipeline_modular_completo/CONFIGURACION_RAPIDA.md)**
 
 ---
 
-## 💻 Uso
+## 💻 Usage
 
-### Ejecución Interactiva (Recomendado)
+### Interactive Execution (Recommended)
 
 ```bash
-# Ejecutar el pipeline con menú interactivo
+# Run the pipeline with interactive menu
 bash metagenomics_pipeline.sh
 ```
 
-**Menú principal:**
-- Selecciona módulos individuales (1-10) o todos (A)
-- Configura modo Kraken2 (Simple, Dual, Triple)
-- Selecciona fuente de bins (DAS Tool, MetaBAT2, etc.)
-- Revisa selección (R) y ejecuta (E)
+**Main menu:**
+- Select individual modules (1-10) or all (A)
+- Configure Kraken2 mode (Simple, Dual, Triple)
+- Select bin source (DAS Tool, MetaBAT2, etc.)
+- Review selection (R) and execute (E)
 
-### Ejecución de Módulos Individuales
+### Individual Module Execution
 
 ```bash
-# Módulo 1: QC & Trimming
+# Module 1: QC & Trimming
 bash run_trimgalore.sh
 
-# Módulo 4: Binning
+# Module 4: Binning
 bash run_binning_fixed.sh
 
-# Módulo 6: GTDB-Tk
+# Module 6: GTDB-Tk
 export BINS_SOURCE=dastool
 bash run_gtdbtk.sh
 ```
 
-### Ejecución Completa Automatizada
+### Complete Automated Execution
 
 ```bash
-# Configurar variables
+# Configure variables
 export BINS_SOURCE=dastool
 export KRAKEN_MODE=dual
 
-# Ejecutar pipeline completo
+# Run complete pipeline
 bash metagenomics_pipeline.sh
-# Seleccionar: A (todos los módulos)
-# Ejecutar: E
+# Select: A (all modules)
+# Execute: E
 ```
 
-**[Ver guía de uso detallada →](GUIA_RAPIDA.md)**
+**[View detailed usage guide →](GUIA_RAPIDA.md)**
 
 ---
 
-## 📚 Documentación
+## 📚 Documentation
 
-### Guías de Inicio
+### Getting Started Guides
 
-- **[Configuración Rápida](CONFIGURACION_RAPIDA.md)** - Instalación y configuración en 5 minutos
-- **[Guía de Uso](GUIA_RAPIDA.md)** - Casos de uso y ejemplos prácticos
-- **[Flujo del Pipeline](FLUJO_PIPELINE.md)** - Descripción detallada de cada módulo
+- **[Quick Configuration](CONFIGURACION_RAPIDA.md)** - Installation and configuration in 5 minutes
+- **[Usage Guide](GUIA_RAPIDA.md)** - Use cases and practical examples
+- **[Pipeline Workflow](FLUJO_PIPELINE.md)** - Detailed description of each module
 
-### Documentación Técnica
+### Technical Documentation
 
-- **[Selección de Bins](SELECCION_BINS.md)** - Cómo elegir entre DAS Tool, MetaBAT2, MaxBin2, CONCOCT
-- **[Binning Completo](BINNING_COMPLETO.md)** - Binning con 4 herramientas y refinamiento
-- **[GTDB-Tk v2.5.2](GTDBTK_v2.5_MEJORAS.md)** - Novedades de GTDB-Tk y base de datos r226
-- **[Archivos Temporales](ANALISIS_ARCHIVOS_TEMPORALES.md)** - Manejo de espacio en disco
-- **[Uso en /Part4](GUIA_USO_PART4.md)** - Configuración para discos externos
+- **[Bin Selection](SELECCION_BINS.md)** - How to choose between DAS Tool, MetaBAT2, MaxBin2, CONCOCT
+- **[Complete Binning](BINNING_COMPLETO.md)** - Binning with 4 tools and refinement
+- **[GTDB-Tk v2.5.2](GTDBTK_v2.5_MEJORAS.md)** - GTDB-Tk updates and database r226
+- **[Temporary Files](ANALISIS_ARCHIVOS_TEMPORALES.md)** - Disk space management
+- **[Usage on /Part4](GUIA_USO_PART4.md)** - Configuration for external disks
 
-### Solución de Problemas
+### Troubleshooting
 
-- **[Corrección de Binning](NOTA_CORRECCION_BINNING.md)** - Errores comunes en binning
-- **[Error GTDB-Tk](SOLUCION_ERROR_GTDBTK.md)** - Incompatibilidad Python 3.14
+- **[Binning Correction](NOTA_CORRECCION_BINNING.md)** - Common binning errors
+- **[GTDB-Tk Error](SOLUCION_ERROR_GTDBTK.md)** - Python 3.14 incompatibility
 
 ---
 
-## 🛠️ Requisitos
+## 🛠️ Requirements
 
 ### Hardware
 
-| Componente | Mínimo | Recomendado |
-|------------|--------|-------------|
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
 | **CPU** | 20 cores | 40+ cores |
 | **RAM** | 64 GB | 128+ GB |
-| **Disco** | 500 GB | 1+ TB |
-| **Temporales** | 300 GB | 500+ GB |
+| **Disk** | 500 GB | 1+ TB |
+| **Temporary** | 300 GB | 500+ GB |
 
 ### Software
 
-- **Sistema Operativo:** Linux (Ubuntu 20.04+, CentOS 7+)
-- **Gestor de ambientes:** Micromamba o Conda
-- **Python:** 3.8-3.11 (NO 3.12+)
+- **Operating System:** Linux (Ubuntu 20.04+, CentOS 7+)
+- **Environment manager:** Micromamba or Conda
+- **Python:** 3.8-3.11 (NOT 3.12+)
 - **Bash:** 4.0+
 
-### Bases de Datos
+### Databases
 
-| Base de Datos | Tamaño | Módulo | Descarga |
-|---------------|--------|--------|----------|
+| Database | Size | Module | Download |
+|----------|------|--------|----------|
 | **GTDB-Tk r226** | ~80 GB | 6 | [Link](https://data.gtdb.ecogenomic.org/releases/release226/226.0/auxillary_files/gtdbtk_r226_data.tar.gz) |
 | **Kraken2 GTDB** | ~60 GB | 5 | [Link](https://benlangmead.github.io/aws-indexes/k2) |
 | **CARD** | ~1 GB | 8 | [Link](https://card.mcmaster.ca/download) |
-| **AntiSMASH** | ~15 GB | 9 | Instalado con ambiente |
+| **AntiSMASH** | ~15 GB | 9 | Installed with environment |
 
 ---
 
-## 📁 Estructura de Directorios
+## 📁 Directory Structure
 
 ```
 pipeline_metagenomico/
-├── metagenomics_pipeline.sh       # Pipeline principal
-├── run_*.sh                       # Scripts por módulo
-├── *.yaml                         # Archivos de ambientes
-├── setup_tmp_part4.sh             # Configuración de temporales
+├── metagenomics_pipeline.sh       # Main pipeline
+├── run_*.sh                       # Module scripts
+├── *.yaml                         # Environment files
+├── setup_tmp_part4.sh             # Temporary configuration
 │
-├── docs/                          # Documentación
+├── docs/                          # Documentation
 │   ├── CONFIGURACION_RAPIDA.md
 │   ├── FLUJO_PIPELINE.md
 │   ├── GUIA_RAPIDA.md
 │   └── ...
 │
-└── data/                          # Datos (crear manualmente)
-    ├── MergedFastq/               # Reads de entrada
-    ├── output/                    # Resultados del pipeline
-    └── tmp/                       # Archivos temporales
+└── data/                          # Data (create manually)
+    ├── MergedFastq/               # Input reads
+    ├── output/                    # Pipeline results
+    └── tmp/                       # Temporary files
 ```
 
-### Salidas del Pipeline
+### Pipeline Outputs
 
 ```
 output/
-├── trimmed/                       # Módulo 1: Reads limpios
-├── host_removed/                  # Módulo 2: Reads sin hospedero
-├── megahit_assemblies/            # Módulo 3: Contigs ensamblados
-├── binning/                       # Módulo 4: Genomas reconstruidos
+├── trimmed/                       # Module 1: Clean reads
+├── host_removed/                  # Module 2: Host-free reads
+├── megahit_assemblies/            # Module 3: Assembled contigs
+├── binning/                       # Module 4: Reconstructed genomes
 │   ├── metabat2/
 │   ├── maxbin2/
 │   ├── concoct/
-│   └── dastool/                   # ← Bins refinados (recomendado)
-├── kraken2/                       # Módulo 5: Taxonomía de reads
-├── gtdbtk/                        # Módulo 6: Taxonomía de bins
-├── prokka/                        # Módulo 7: Genes anotados
-├── rgi/                           # Módulo 8: Genes de resistencia
-├── antismash/                     # Módulo 9: Clusters biosintéticos
-└── analysis/                      # Módulo 10: Reportes finales
+│   └── dastool/                   # ← Refined bins (recommended)
+├── kraken2/                       # Module 5: Read taxonomy
+├── gtdbtk/                        # Module 6: Bin taxonomy
+├── prokka/                        # Module 7: Annotated genes
+├── rgi/                           # Module 8: Resistance genes
+├── antismash/                     # Module 9: Biosynthetic clusters
+└── analysis/                      # Module 10: Final reports
 ```
 
 ---
 
-## 💡 Ejemplos
+## 💡 Examples
 
-### Ejemplo 1: Pipeline Completo
+### Example 1: Complete Pipeline
 
 ```bash
-# 1. Configurar
+# 1. Configure
 cd pipeline_metagenomico
 source setup_tmp_part4.sh
 
-# 2. Copiar datos
-cp /ruta/reads/*.fastq.gz data/MergedFastq/
+# 2. Copy data
+cp /path/reads/*.fastq.gz data/MergedFastq/
 
-# 3. Ejecutar
+# 3. Execute
 bash metagenomics_pipeline.sh
-# Seleccionar: A (todos)
-# Configurar Kraken2: 2 (Dual)
-# Configurar bins: 2 (DAS Tool)
-# Ejecutar: E
+# Select: A (all)
+# Configure Kraken2: 2 (Dual)
+# Configure bins: 2 (DAS Tool)
+# Execute: E
 ```
 
-### Ejemplo 2: Solo Binning y Taxonomía
+### Example 2: Binning and Taxonomy Only
 
 ```bash
-# Ejecutar módulos 3-6
+# Run modules 3-6
 bash metagenomics_pipeline.sh
-# Seleccionar: 3, 4, 5, 6
-# Ejecutar: E
+# Select: 3, 4, 5, 6
+# Execute: E
 ```
 
-### Ejemplo 3: Comparar Binnners
+### Example 3: Compare Binners
 
 ```bash
-# Ejecutar GTDB-Tk con diferentes bins
+# Run GTDB-Tk with different bins
 export BINS_SOURCE=dastool
 bash run_gtdbtk.sh
 
@@ -317,99 +316,97 @@ OUTPUT_DIR=output/gtdbtk_maxbin2 bash run_gtdbtk.sh
 
 ---
 
-## 🐛 Solución de Problemas
+## 🐛 Troubleshooting
 
 ### Error: "No space left on device"
 
-**Causa:** Disco lleno, especialmente `/tmp` (root).
+**Cause:** Disk full, especially `/tmp` (root).
 
-**Solución:**
+**Solution:**
 ```bash
-# Configurar temporales en disco con espacio
+# Configure temporaries on disk with space
 source setup_tmp_part4.sh
-echo $TMPDIR  # Verificar que apunta a disco con espacio
+echo $TMPDIR  # Verify it points to disk with space
 ```
 
-**[Ver guía completa →](ANALISIS_ARCHIVOS_TEMPORALES.md)**
+**[View complete guide →](ANALISIS_ARCHIVOS_TEMPORALES.md)**
 
 ### Error: GTDB-Tk "ValueError: __StageLogger"
 
-**Causa:** Incompatibilidad con Python 3.14.
+**Cause:** Incompatibility with Python 3.14.
 
-**Solución:**
+**Solution:**
 ```bash
-# Recrear ambiente con Python 3.10
+# Recreate environment with Python 3.10
 micromamba env remove -n gtdbtk
 micromamba create -n gtdbtk -c bioconda python=3.10 gtdbtk=2.5.2
 ```
 
-**[Ver solución completa →](SOLUCION_ERROR_GTDBTK.md)**
+**[View complete solution →](SOLUCION_ERROR_GTDBTK.md)**
 
 ### Error: MaxBin2 "Failed to get Abundance information"
 
-**Causa:** Formato incorrecto de archivo de abundancia.
+**Cause:** Incorrect abundance file format.
 
-**Solución:** El script actualizado usa reads directamente (`-reads`) en lugar de abundancia (`-abund`).
+**Solution:** The updated script uses reads directly (`-reads`) instead of abundance (`-abund`).
 
-**[Ver corrección →](NOTA_CORRECCION_BINNING.md)**
-
----
-
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! Por favor:
-
-1. Fork el repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+**[View correction →](NOTA_CORRECCION_BINNING.md)**
 
 ---
 
-## 📄 
+## 🤝 Contributions
 
-Este proyecto fue realizado en mi estancia de Profesor Visitante en CINVESTAV Unidad Irapuado, en el Laboratorio de Bioinformatica y Redes complejas dirigido por la Dra Maribel Hernandez . El trabajo fue en conjunto con la Dra Elizabeth Cadenas (elizabeth.cadenas.c@gmail.com ), Dra Katia Aviña-Padilla (Katia.avinap@cinvestav.mx), para el estudio de Las Pozas de Cuatro Cienegas Cohauhila.
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
-## 📧 Contacto
+## 📄 Acknowledgments
+
+This project was carried out during my Visiting Professor stay at CINVESTAV Unidad Irapuato, in the Bioinformatics and Complex Networks Laboratory directed by Dr. Maribel Hernandez. The work was done in collaboration with Dr. Elizabeth Cadenas (elizabeth.cadenas.c@gmail.com), Dr. Katia Aviña-Padilla (Katia.avinap@cinvestav.mx), for the study of Las Pozas de Cuatro Ciénegas, Coahuila.
+
+---
+
+## 📧 Contact
 
 **Shaday Guerrero**
 
 - GitHub: [@shadayguerrero](https://github.com/shadayguerrero)
 - Email: shaday@matmor.unam.mx
 
-**Repositorio:** [https://github.com/shadayguerrero/pipeline_metagenomico](https://github.com/shadayguerrero/pipeline_metagenomico)
+**Repository:** [https://github.com/shadayguerrero/pipeline_metagenomico](https://github.com/shadayguerrero/pipeline_metagenomico)
 
 ---
 
-## 🙏 Agradecimientos
+## 🙏 Credits
 
-Este pipeline integra las siguientes herramientas de código abierto:
+This pipeline integrates the following open-source tools:
 
-- [Trim Galore](https://github.com/FelixKrueger/TrimGalore) - QC y trimming
-- [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/) - Mapeo de reads
-- [MEGAHIT](https://github.com/voutcn/megahit) - Ensamblaje metagenómico
+- [Trim Galore](https://github.com/FelixKrueger/TrimGalore) - QC and trimming
+- [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/) - Read mapping
+- [MEGAHIT](https://github.com/voutcn/megahit) - Metagenomic assembly
 - [MetaBAT2](https://bitbucket.org/berkeleylab/metabat) - Binning
 - [MaxBin2](https://sourceforge.net/projects/maxbin2/) - Binning
 - [CONCOCT](https://github.com/BinPro/CONCOCT) - Binning
-- [DAS Tool](https://github.com/cmks/DAS_Tool) - Refinamiento de bins
-- [Kraken2](https://github.com/DerrickWood/kraken2) - Clasificación taxonómica
-- [GTDB-Tk](https://github.com/Ecogenomics/GTDBTk) - Taxonomía de genomas
-- [Prokka](https://github.com/tseemann/prokka) - Anotación de genes
-- [RGI](https://github.com/arpcard/rgi) - Genes de resistencia
-- [AntiSMASH](https://github.com/antismash/antismash) - Metabolitos secundarios
+- [DAS Tool](https://github.com/cmks/DAS_Tool) - Bin refinement
+- [Kraken2](https://github.com/DerrickWood/kraken2) - Taxonomic classification
+- [GTDB-Tk](https://github.com/Ecogenomics/GTDBTk) - Genome taxonomy
+- [Prokka](https://github.com/tseemann/prokka) - Gene annotation
+- [RGI](https://github.com/arpcard/rgi) - Resistance genes
+- [AntiSMASH](https://github.com/antismash/antismash) - Secondary metabolites
 
 ---
 
-
-
-Y las herramientas individuales según corresponda.
+And the individual tools as appropriate.
 
 ---
 
-## 📈 Estadísticas
+## 📈 Statistics
 
 ![GitHub stars](https://img.shields.io/github/stars/shadayguerrero/pipeline_metagenomico?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/shadayguerrero/pipeline_metagenomico?style=social)
@@ -417,6 +414,6 @@ Y las herramientas individuales según corresponda.
 
 ---
 
-**Última actualización:** Diciembre 2025  
-**Versión:** 1.0  
-**Estado:** Activo y mantenido
+**Last updated:** December 2025  
+**Version:** 1.0  
+**Status:** Active and maintained
