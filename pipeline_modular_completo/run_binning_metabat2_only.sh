@@ -19,7 +19,7 @@ OUTPUT_DIR="${OUTPUT_DIR:-${PROJECT_DIR}/output/binning}"
 # Parámetros de procesamiento
 THREADS="${THREADS:-8}"
 MIN_CONTIG_LEN=500
-MIN_BIN_SIZE=2500  # 2.5 kb para metagenomas
+MIN_BIN_SIZE=1000  # 2.5 kb para metagenomas
 
 # Colores
 RED='\033[0;31m'

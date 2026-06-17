@@ -24,28 +24,28 @@ NC='\033[0m'
 # ============================================================================
 
 # Directorio base del proyecto
-PROJECT_DIR="/files/shaday/4_cienegas"
+PROJECT_DIR="/files2/shaday/mieles"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Directorios de entrada/salida
-INPUT_DIR="${PROJECT_DIR}/MergedFastq"
-OUTPUT_DIR="${PROJECT_DIR}/output"
+INPUT_DIR="${PROJECT_DIR}/reads"
+OUTPUT_DIR="${PROJECT_DIR}/nueva_corrida"
 
 # Ambientes de micromamba (individuales)
-ENV_BASE="/home_local/camda/micromamba/envs"
+ENV_BASE="/home/shaday/micromamba/envs"
 QC_ENV="${ENV_BASE}/qc_assembly"
 BINNING_ENV="${ENV_BASE}/binning"
-KRAKEN_ENV="kraken2"
-PROKKA_ENV="prokka"
-RGI_ENV="rgi"
-ANTISMASH_ENV="antismash"
-ANALYSIS_ENV="analysis"
+KRAKEN_ENV="${ENV_BASE}/kraken2"
+PROKKA_ENV="${ENV_BASE}/prokka"
+RGI_ENV="${ENV_BASE}/rgi"
+ANTISMASH_ENV="${ENV_BASE}/antismash"
+ANALYSIS_ENV="${ENV_BASE}/analysis"
 
 # Bases de datos
-BOWTIE2_INDEX="/home_local/camda/shaday/database/bowtie2/index/All/all"
-KRAKEN2_GTDB="/files/database/k2_gtdb_r214"
-KRAKEN2_PLUSPFP="/files/database/k2_pluspfp_20250402"
-KRAKEN2_EUPATH="/files/database/k2_eupathdb48_20230407"
+BOWTIE2_INDEX="/data/database/index/Human/human"
+KRAKEN2_GTDB="/data/database/k2_gtdb_genome_reps_20250609"
+KRAKEN2_PLUSPFP="/data/database/k2_pluspfp_20250402"
+KRAKEN2_EUPATH="/data/database/k2_eupathdb48_20230407"
 
 # Recursos computacionales
 THREADS_QC=20
@@ -56,22 +56,13 @@ THREADS_KRAKEN=40
 
 # Directorios temporales
 # IMPORTANTE: Si root está lleno, usar /mnt/Part4/Laboratory/tmp
-# Ejecuta: source setup_tmp_part4.sh antes del pipeline
-if [ -z "${TMPDIR}" ]; then
-    # Intentar usar /mnt/Part4/Laboratory/tmp si existe
-    if [ -d "/mnt/Part4/Laboratory" ]; then
-        export TMPDIR="/mnt/Part4/Laboratory/tmp/general"
-        mkdir -p "${TMPDIR}"
-    elif [ -d "/Part4" ]; then
-        export TMPDIR="/Part4/tmp/general"
-        mkdir -p "${TMPDIR}"
-    else
-        export TMPDIR="/tmp"
-    fi
-fi
+# Directorio temporal
+export TMPDIR="/files2/shaday/luciana"
+
+mkdir -p "${TMPDIR}"
+
 export TEMP="${TMPDIR}"
 export TMP="${TMPDIR}"
-
 # ============================================================================
 # VARIABLES DE ESTADO
 # ============================================================================
